@@ -3,15 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LexiGrid - Daily Word Puzzle</title>
+  <title>LexiGrid - Word Puzzle</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>LEXGRID</h1>
-  <div id="message"></div>
-  <div id="board"></div>
-  <div id="keyboard"></div>
-  <button id="restart">New Game</button>
+  <div class="bg-orbs" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <main class="app">
+    <header>
+      <h1 id="title">
+        <span style="--i:0">L</span><span style="--i:1">E</span><span style="--i:2">X</span><span style="--i:3">I</span><span style="--i:4">G</span><span style="--i:5">R</span><span style="--i:6">I</span><span style="--i:7">D</span>
+      </h1>
+      <p class="tagline">Guess the hidden word in 6 tries</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat" id="streakBox">
+        <span class="stat-icon" id="flame">🔥</span>
+        <span class="stat-num" id="streak">0</span>
+        <span class="stat-label">Streak</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🏆</span>
+        <span class="stat-num" id="best">0</span>
+        <span class="stat-label">Best</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">✅</span>
+        <span class="stat-num" id="wins">0</span>
+        <span class="stat-label">Wins</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🎮</span>
+        <span class="stat-num" id="played">0</span>
+        <span class="stat-label">Played</span>
+      </div>
+    </section>
+
+    <div id="message"></div>
+    <div id="board"></div>
+    <div id="keyboard"></div>
+    <button id="restart">New Game</button>
+  </main>
+
+  <canvas id="confetti"></canvas>
   <script src="script.js"></script>
 </body>
 </html>
