@@ -222,22 +222,49 @@ h1 span:hover { animation: wiggle 0.4s; }
 .key.present { background: var(--present); color: #fff; }
 .key.absent  { background: var(--absent);  color: #fff; }
 
-/* ---------- Restart button ---------- */
+/* ---------- Top bar + New game (small and quiet on purpose) ---------- */
+.topbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+}
+
 #restart {
-  margin-top: 18px;
-  padding: 12px 28px;
+  padding: 5px 12px;
+  border: 1px solid var(--tile-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+#restart:hover { background: var(--card); color: var(--text); }
+#restart:hover::first-letter { display: inline-block; }
+#restart:active { transform: scale(0.95); }
+
+/* ---------- Big Enter button ---------- */
+#enterBtn {
+  margin-top: 16px;
+  width: 100%;
+  max-width: 320px;
+  padding: 14px 28px;
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, #8e5cf0, #c77dd8);
   color: #fff;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
+  letter-spacing: 3px;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(142, 92, 240, 0.4);
   transition: transform 0.15s, box-shadow 0.15s;
 }
-#restart:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 10px 24px rgba(142, 92, 240, 0.5); }
-#restart:active { transform: scale(0.96); }
+#enterBtn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 24px rgba(142, 92, 240, 0.5); }
+#enterBtn:active { transform: scale(0.96); }
 
 #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 10; }

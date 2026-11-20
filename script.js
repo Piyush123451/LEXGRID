@@ -128,7 +128,7 @@ function recordLoss() {
 const KEY_ROWS = [
   "qwertyuiop".split(""),
   "asdfghjkl".split(""),
-  ["Enter", ..."zxcvbnm".split(""), "Back"]
+  [..."zxcvbnm".split(""), "Back"]
 ];
 
 const boardEl = document.getElementById("board");
@@ -400,11 +400,20 @@ document.querySelectorAll(".stat-num").forEach(el => {
 
 document.getElementById("restart").addEventListener("click", e => {
   e.target.blur();
-  // Quitting a game you've already started counts as a loss
-  const abandoned = !gameOver && currentRow > 0;
-  if (abandoned) recordLoss();
+  const inProgress = !gameOver && currentRow > 0;
+
+  // Ask first, because quitting mid-game resets the streak
+  if (inProgress && !confirm("Start a new game? Your current streak will reset to 0.")) {
+    return;
+  }
+  if (inProgress) recordLoss();
   newGame();
-  if (abandoned) showMessage("Game abandoned — streak reset");
+  if (inProgress) showMessage("Game abandoned — streak reset");
+});
+
+document.getElementById("enterBtn").addEventListener("click", e => {
+  e.target.blur(); // so the physical Enter key doesn't re-click the button
+  handleKey("Enter");
 });
 
 // ---------- Start ----------
